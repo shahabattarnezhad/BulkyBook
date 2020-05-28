@@ -5,6 +5,7 @@ using System.Text;
 using BulkyBook.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBook.DataAccess.Repository
 {
@@ -23,7 +24,6 @@ namespace BulkyBook.DataAccess.Repository
             if (objFromDb != null)
             {
                 objFromDb.CategoryName = category.CategoryName;
-                _db.SaveChanges();
             }
         }
     }
