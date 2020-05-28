@@ -70,45 +70,6 @@ namespace BulkyBook.Areas.Admin.Controllers
             return View(category);
         }
 
-        public IActionResult Upsert(int? id)
-        {
-            Category category = new Category();
-
-            // Create
-            if (id == null)
-            {
-                return View(category);
-            }
-
-            // Update
-            category = _unitOfWork.Category.Get(id.GetValueOrDefault());
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Category category)
-        {
-            if (ModelState.IsValid)
-            {
-                if (category.CategoryId == 0)
-                {
-                    _unitOfWork.Category.Add(category);
-                }
-
-                _unitOfWork.Category.Update(category);
-
-                _unitOfWork.Save();
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(category);
-        }
 
         #region API Calls
 
