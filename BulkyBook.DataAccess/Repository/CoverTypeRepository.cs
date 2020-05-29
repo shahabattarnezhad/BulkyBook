@@ -5,25 +5,23 @@ using System.Text;
 using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBook.DataAccess.Repository
 {
-    public class CategoryRepository : Repository<Category>, ICategoryRepository
+    public class CoverTypeRepository : Repository<CoverType>, ICoverTypeRepository
     {
         private readonly ApplicationDbContext _db;
-
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+        public CoverTypeRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
-        public void Update(Category category)
+        public void Update(CoverType coverType)
         {
-            var objFromDb = _db.Categories.FirstOrDefault(o => o.CategoryId == category.CategoryId);
+            var objFromDb = _db.CoverTypes.FirstOrDefault(c => c.CoverTypeId == coverType.CoverTypeId);
             if (objFromDb != null)
             {
-                objFromDb.CategoryName = category.CategoryName;
+                objFromDb.CoverTypeName = coverType.CoverTypeName;
             }
         }
     }
