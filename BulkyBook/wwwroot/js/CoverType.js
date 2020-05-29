@@ -7,22 +7,22 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Admin/Category/GetAll"
+            "url": "/Admin/CoverType/GetAll"
         },
         "columns": [
             {
-                "data": "categoryName", "width": "60%"
+                "data": "coverTypeName", "width": "60%"
             },
             {
-                "data": "categoryId",
+                "data": "coverTypeId",
                 "render": function (data) {
                     return `
                 <div class="text-center">
-                    <a href="/Admin/Category/Edit/${data}" class="btn btn-success text-white" style="cursor: pointer">
+                    <a href="/Admin/CoverType/Edit/${data}" class="btn btn-success text-white" style="cursor: pointer">
                         <i class="fas fa-edit"></i>
                     </a>
 
-                    <a onclick=Delete("/Admin/Category/Delete/${data}") class="btn btn-danger text-white" style="cursor: pointer">
+                    <a onclick=Delete("/Admin/CoverType/Delete/${data}") class="btn btn-danger text-white" style="cursor: pointer">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>
@@ -47,7 +47,7 @@ function Delete(url) {
             $.ajax({
                 type: "DELETE",
                 url: url,
-                success: function(data) {
+                success: function (data) {
                     if (data.success) {
                         toastr.success(data.message);
                         dataTable.ajax.reload();
