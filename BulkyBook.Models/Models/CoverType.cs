@@ -16,5 +16,11 @@ namespace BulkyBook.Models.Models
         [Required(ErrorMessage = "Please enter the {0}")]
         [Column(TypeName = "nvarchar(50)")]
         public string CoverTypeName { get; set; }
+
+        #region Relations
+
+        public List<Product> Products { get; set; }
+
+        #endregion
     }
 }
