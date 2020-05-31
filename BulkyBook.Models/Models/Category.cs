@@ -17,12 +17,6 @@ namespace BulkyBook.Models.Models
         [Display(Name = "Category Name")]
         [Required(ErrorMessage = "Please enter the {0}")]
         [Column(TypeName = "nvarchar(50)")]
-        public string CategoryName { get; set; }
-
-        #region Relations
-
-        public List<Product> Products { get; set; }
-
-        #endregion
+        public string Name { get; set; }
     }
 }

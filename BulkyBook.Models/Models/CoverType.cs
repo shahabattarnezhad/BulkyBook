@@ -17,10 +17,5 @@ namespace BulkyBook.Models.Models
         [Column(TypeName = "nvarchar(50)")]
         public string CoverTypeName { get; set; }
 
-        #region Relations
-
-        public List<Product> Products { get; set; }
-
-        #endregion
     }
 }

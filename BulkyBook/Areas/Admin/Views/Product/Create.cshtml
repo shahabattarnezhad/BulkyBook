@@ -13,73 +13,73 @@
         <div class="col-8 pt-4">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductTitle"></label>
+                    <label asp-for="Product.Title"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductTitle" />
-                    <span class="text-danger" asp-validation-for="Product.ProductTitle"></span>
+                    <input class="form-control" asp-for="Product.Title" />
+                    <span class="text-danger" asp-validation-for="Product.Title"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductISBN"></label>
+                    <label asp-for="Product.ISBN"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductISBN" />
-                    <span class="text-danger" asp-validation-for="Product.ProductISBN"></span>
+                    <input class="form-control" asp-for="Product.ISBN" />
+                    <span class="text-danger" asp-validation-for="Product.ISBN"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductAuthor"></label>
+                    <label asp-for="Product.Author"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductAuthor" />
-                    <span class="text-danger" asp-validation-for="Product.ProductAuthor"></span>
+                    <input class="form-control" asp-for="Product.Author" />
+                    <span class="text-danger" asp-validation-for="Product.Author"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductDescription"></label>
+                    <label asp-for="Product.Description"></label>
                 </div>
                 <div class="col-8">
-                    <textarea asp-for="Product.ProductDescription" class="form-control`"></textarea>
+                    <textarea asp-for="Product.Description" class="form-control`"></textarea>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductListPrice"></label>
+                    <label asp-for="Product.ListPrice"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductListPrice" />
-                    <span class="text-danger" asp-validation-for="Product.ProductListPrice"></span>
+                    <input class="form-control" asp-for="Product.ListPrice" />
+                    <span class="text-danger" asp-validation-for="Product.ListPrice"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductPrice"></label>
+                    <label asp-for="Product.Price"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductPrice" />
-                    <span class="text-danger" asp-validation-for="Product.ProductPrice"></span>
+                    <input class="form-control" asp-for="Product.Price" />
+                    <span class="text-danger" asp-validation-for="Product.Price"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductPrice50"></label>
+                    <label asp-for="Product.Price50"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductPrice50" />
-                    <span class="text-danger" asp-validation-for="Product.ProductPrice50"></span>
+                    <input class="form-control" asp-for="Product.Price50" />
+                    <span class="text-danger" asp-validation-for="Product.Price50"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Product.ProductPrice100"></label>
+                    <label asp-for="Product.Price100"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="Product.ProductPrice100" />
-                    <span class="text-danger" asp-validation-for="Product.ProductPrice100"></span>
+                    <input class="form-control" asp-for="Product.Price100" />
+                    <span class="text-danger" asp-validation-for="Product.Price100"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -139,7 +139,7 @@
         });
 
         function validateInput() {
-            if (document.getElementById("uploadBox").value = "") {
+            if (document.getElementById("uploadBox").value == "") {
                 swal("Error", "Please select an image!", "error");
                 return false;
             }

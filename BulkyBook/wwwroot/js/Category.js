@@ -11,7 +11,7 @@ function loadDataTable() {
         },
         "columns": [
             {
-                "data": "categoryName", "width": "60%"
+                "data": "name", "width": "60%"
             },
             {
                 "data": "categoryId",

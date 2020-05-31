@@ -1,42 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace BulkyBook.Models.Models
 {
+    [Table("Tbl_Product")]
     public class Product
     {
+
+
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string ProductTitle { get; set; }
+        public string Title { get; set; }
 
         [Required]
-        public string ProductAuthor { get; set; }
-        public string ProductDescription { get; set; }
+        public string Author { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public string ProductISBN { get; set; }
+        public string ISBN { get; set; }
 
         [Required]
         [Range(1,10000)]
-        public double ProductListPrice { get; set; }
+        public double ListPrice { get; set; }
 
         [Required]
         [Range(1, 10000)]
-        public double ProductPrice { get; set; }
+        public double Price { get; set; }
 
         [Required]
         [Range(1, 10000)]
-        public double ProductPrice50 { get; set; }
+        public double Price50 { get; set; }
 
         [Required]
         [Range(1, 10000)]
-        public double ProductPrice100 { get; set; }
+        public double Price100 { get; set; }
 
-        public string ProductImage { get; set; }
+        public string Image { get; set; }
 
         [Required]
         public int CategoryId { get; set; }
@@ -46,7 +50,10 @@ namespace BulkyBook.Models.Models
 
         #region Relations
 
+        [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        [ForeignKey("CoverTypeId")]
         public CoverType CoverType { get; set; }
 
         #endregion
