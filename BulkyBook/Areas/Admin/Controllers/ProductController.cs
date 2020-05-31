@@ -69,7 +69,7 @@ namespace BulkyBook.Areas.Admin.Controllers
                         files[0].CopyTo(fileStream);
                     }
 
-                    productVm.Product.Image = @"\images\products" + fileName + extension;
+                    productVm.Product.Image = @"\images\products\" + fileName + extension;
                 }
 
                 _unitOfWork.Product.Add(productVm.Product);
@@ -136,11 +136,11 @@ namespace BulkyBook.Areas.Admin.Controllers
                         {
                             files[0].CopyTo(fileStream);
                         }
-                        productVm.Product.Image = @"\images\products" + fileName + extension;
+                        productVm.Product.Image = @"\images\products\" + fileName + extension;
                     }
                     else
                     {
-                        // When they do not change the image!
+                        //update when they do not change the image
                         if (productVm.Product.Id != 0)
                         {
                             Product objFromDb = _unitOfWork.Product.Get(productVm.Product.Id);
@@ -280,6 +280,14 @@ namespace BulkyBook.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = "Error while deleting!" });
             }
+
+            string webRootPath = _webHostEnvironment.WebRootPath;
+            var imagePath = Path.Combine(webRootPath, product.Image.TrimStart('\\'));
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+
             _unitOfWork.Product.Remove(product);
             _unitOfWork.Save();
 

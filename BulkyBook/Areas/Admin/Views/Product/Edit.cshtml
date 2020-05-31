@@ -1,31 +1,132 @@
-﻿@*@model BulkyBook.Models.ViewModels.ProductVM
+﻿@model BulkyBook.Models.ViewModels.ProductVM
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var title = "Create Product";
+    var title = "Edit Product";
 }
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="row p-3 border">
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-        <input type="hidden" asp-for="Product.ProductId"/>
+        <input type="hidden" asp-for="Product.Id"/>
         <div class="col-12 border-bottom">
             <h2 class="text-primary">@title</h2>
         </div>
         <div class="col-8 pt-4">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="CategoryName"></label>
+                    <label asp-for="Product.Title"></label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control" asp-for="CategoryName" />
-                    <span class="text-danger" asp-validation-for="CategoryName"></span>
+                    <input class="form-control" asp-for="Product.Title" />
+                    <span class="text-danger" asp-validation-for="Product.Title"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.ISBN"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.ISBN" />
+                    <span class="text-danger" asp-validation-for="Product.ISBN"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Author"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.Author" />
+                    <span class="text-danger" asp-validation-for="Product.Author"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Description"></label>
+                </div>
+                <div class="col-8">
+                    <textarea asp-for="Product.Description" class="form-control`"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.ListPrice"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.ListPrice" />
+                    <span class="text-danger" asp-validation-for="Product.ListPrice"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Price"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.Price" />
+                    <span class="text-danger" asp-validation-for="Product.Price"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Price50"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.Price50" />
+                    <span class="text-danger" asp-validation-for="Product.Price50"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Product.Price100"></label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control" asp-for="Product.Price100" />
+                    <span class="text-danger" asp-validation-for="Product.Price100"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Category
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Product.CategoryId, Model.CategoryList,
+                        "--Select a Category--", new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Product.CategoryId"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Cover Type
+                </div>
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.Product.CoverTypeId, Model.CoverTypeList,
+                        "--Select a Cover Type--", new { @class = "form-control" })
+                    <span class="text-danger" asp-validation-for="Product.CoverTypeId"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    Image
+                </div>
+                <div class="col-8">
+                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-8 offset-4">
-                    <partial name="_EditAndBackToListButton" model="Model.Product.ProductId" />
+
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary form-control"> Edit </button>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="col-3 offset-1 pt-4">
+            <img src="@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
         </div>
     </div>
 </form>
@@ -33,4 +134,14 @@
 @section Scripts
 {
     <partial name="_ValidationScriptsPartial" />
-}*@
+    <script src="https://cdn.tiny.cloud/1/vsq91s1nf2mnb3c2s6ly8dxjg5ulvhx4kqg9hxtnmfjefi1l/tinymce/5/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+
+    </script>
+
+}
